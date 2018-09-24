@@ -1,0 +1,19 @@
+<div class="contents row">
+  <%= form_tag "/shops", method: :post do %>
+    <h3>POST</h3>
+    <input type="text" name="image" placeholder="URL">
+    <input type="text" name="shop_name" placeholder="shopname">
+    <textarea name="text" placeholder="text" rows="10" cols="30"></textarea>
+    
+    <input name="smoking_ban" type="hidden" value="false">
+    No smoking<input type="checkbox" name="smoking_ban" value="true">
+    
+    <input name="wifi" type="hidden" value="false">
+    Wi-fi<input type="checkbox" name="wifi" value="true">
+    
+    <input name="withdog" type="hidden" value="false">
+    With your dog<input type="checkbox" name="withdog" value="true">
+    
+    <input type="submit" value="SENT">
+  <% end %>
+</div>

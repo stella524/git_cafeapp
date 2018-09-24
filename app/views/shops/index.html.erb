@@ -1,0 +1,40 @@
+<div class="contents row" >
+  <% @shops.each do |shop| %>
+    <div class="content_post" style="background-image: url(<%= shop.image %>);">
+      <% if user_signed_in? && current_user.id == shop.user_id %>
+        <div class="more">
+            <span><%= image_tag 'arrow_top.png' %></span>
+            <ul class="more_list">
+              <li>
+                <%= link_to "編集", "/shops/#{shop.id}/edit", method: :get %>
+              </li>
+              <li>
+                <%= link_to '削除', "/shops/#{shop.id}", method: :delete %>
+              </li>
+            </ul>
+          </div>
+      <% end %>
+      <%= simple_format(shop.text) %>
+      <span class="name"><%= shop.shop_name %>
+        <% if shop.smoking_ban %>
+          <i class="fas fa-smoking-ban"></i>
+        <% end %>
+        <% if shop.wifi %>
+          <i class="fas fa-wifi"></i>
+        <% end %>
+        <% if shop.withdog %>
+          <i class="fas fa-paw"></i>
+        <% end %>
+        <span class="name">
+          <a href="/users/<%= shop.user_id %>">
+            <span>Posted by <%= shop.user.nickname %></span>
+          </a>
+        </span>
+      </span>
+      
+      
+      
+    </div>
+  <% end %>
+  <%= paginate(@shops) %>
+</div>

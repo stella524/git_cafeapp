@@ -1,0 +1,20 @@
+<div class="contents row">
+  <p><%= @nickname %>さんの投稿一覧</p>
+  <% @shops.each do |shop| %>
+    <div class="content_post" style="background-image: url(<%= shop.image %>);">
+      <%= simple_format(shop.text) %>
+      <span class="name"><%= shop.shop_name %>
+      <% if shop.smoking_ban %>
+        <i class="fas fa-smoking-ban"></i>
+      <% end %>
+      <% if shop.wifi %>
+        <i class="fas fa-wifi"></i>
+      <% end %>
+      <% if shop.withdog %>
+        <i class="fas fa-paw"></i>
+      <% end %>
+      </span>
+    </div>
+  <% end %>
+  <%= paginate(@shops) %>
+</div>
